@@ -2,6 +2,13 @@
 using  namespace  std;
 typedef  long long ll;
 
+//x1 * n1 + y1 * n2 = n;
+//the set of positive integral solution lie in
+// x1 = x + k * (n2 / d);
+// y1 = y - k * (n1 / d);
+//for k between mn and mx
+//x and y are the base solution returned by the extended euclid algorithm
+
 ll gcd(ll a, ll b, ll &x, ll &y){
     if(b == 0){
         x = 1;
