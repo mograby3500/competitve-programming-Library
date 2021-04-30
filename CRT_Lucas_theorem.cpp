@@ -89,7 +89,7 @@ int main(){
 
             q1 *= c / d;
             R += q1 * M;
-            M *= mods[i];
+            M  = (M / __gcd(M, mods[i]) * mods[i];
             R = (R % M + M) % M;
         }
         bool ok = 1;
