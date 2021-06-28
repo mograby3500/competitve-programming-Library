@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+
+ll mod = 1e9 + 7;
+const int N = 3e6 + 10;
+ll factorial[N];
+
+ll power(ll a, ll b){
+    if(b < 0) return 1;
+    ll res = 1;
+    while(b){
+        if(b & 1) res = res * a % mod;
+        a = a * a % mod;
+        b >>= 1;
+    }
+    return res;
+}
+
+ll mod_inv(ll n){
+    return power(n, mod - 2);
+}
+
+ll nck(ll n, ll a){
+    if(n < a) return 0;
+    ll top = factorial[n];
+    ll bot = mod_inv(factorial[a]) * mod_inv(factorial[n - a]); bot %= mod;
+    ll res = top * bot % mod;
+    return res;
+}
+
+void init(){
+    factorial[0] = 1;
+    for(int i = 1; i < N; i++){
+        factorial[i] = factorial[i - 1] * i;
+        factorial[i] %= mod;
+    }
+}
+
+int main() {
+    cin.tie(0);
+    cin.sync_with_stdio(0);
+    init();
+
+    int n, m, k;
+    cin>>n>>m>>k;
+
+    if(n > m + k){
+        cout<<"0";
+        return 0;
+    }
+
+    ll ans = (nck(m + n, n) - nck(m + n, m + k + 1) + mod) % mod;
+    cout<<ans;
+}
