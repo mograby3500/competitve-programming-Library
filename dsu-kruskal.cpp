@@ -7,8 +7,8 @@ struct UnionFind{
         parent = vector<int> (n);
 
         forests = n;
-        for(int i = 0; i < n; i++)
-            parent[i] = i, sz[i] = 1;
+        iota(parent, parent + n, 0);
+        fill(sz, sz + n, 1);
     }
     int find_set(int x){
         if(x == parent[x]) return x;
