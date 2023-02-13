@@ -1,3 +1,4 @@
+const int N = 1e5 + 9, mod = 998244353, root = 5;
 int fp(int b, int p) {
     if (p == 0)return 1;
     int ans = fp(1LL * b * b % mod, p / 2);
